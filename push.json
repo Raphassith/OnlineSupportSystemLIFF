@@ -1,0 +1,19 @@
+{
+  "url": "https://api.line.me/v2/bot/message/push",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer << Channel access token >>"
+  },
+  "body":{
+      "to":"<< userId >>",
+      "messages":[{
+        "type" : "text",
+        "text" : "<< message >>"
+      },{
+      "type": "image",
+      "originalContentUrl": "<< image URL >>",
+      "previewImageUrl": "<< image URL >>"
+      }]
+  }
+}
