@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRcode Reader</title>
+</head>
+
+<body>
+    <h3 id="result">Something is going to happen here...</h3>
+    <button onclick="scanCodeV2()">QR Code Reader</button>
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.15.0/sdk.js"></script>
+    <script>
+        async function scanCodeV2() {
+            try {
+                const result = await liff.scanCodeV2();
+                document.querySelector('#result').innerHTML = result.value;
+            } catch (error) {
+                console.log('scanCodeV2', error);
+            }
+        }
+        async function main() {
+            await liff.init({ liffId: '<< LIFF ID >>' });
+            if (!liff.isLoggedIn()) {
+                liff.login();
+            }
+        }
+        main();
+    </script>
+</body>
+
+</html>
